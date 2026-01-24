@@ -1,8 +1,8 @@
 <template>
   <SidebarProvider :default-open="true" style="--sidebar-width: 25rem" class="h-screen">
-    <ChatComponent ref="chatComponent" />
+    <ChatComponent ref="chatComponent" @ward-change="handleWardChange" />
     <SidebarInset>
-      <MapComponent @map-click="handleMapClick" />
+      <MapComponent ref="mapComponent" @map-click="handleMapClick" />
     </SidebarInset>
   </SidebarProvider>
 </template>
@@ -15,8 +15,13 @@ import MapComponent from '@/components/MapComponent.vue'
 import type { MapClickEvent } from '@/components/MapComponent.vue'
 
 const chatComponent = ref<InstanceType<typeof ChatComponent> | null>(null)
+const mapComponent = ref<InstanceType<typeof MapComponent> | null>(null)
 
 const handleMapClick = (event: MapClickEvent) => {
   chatComponent.value?.sendMapQuery(event)
+}
+
+const handleWardChange = (ward: string | null) => {
+  mapComponent.value?.highlightWard(ward)
 }
 </script>

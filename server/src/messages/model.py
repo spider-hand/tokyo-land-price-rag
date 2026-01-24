@@ -12,3 +12,4 @@ class PostMessageRequest(BaseModel):
 
 class PostMessageResponse(BaseModel):
     response: str
+    ward: Optional[str] = None

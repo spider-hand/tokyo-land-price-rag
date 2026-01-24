@@ -54,7 +54,8 @@ Thanks for your understanding and contributions.
 
 ## Credits
 
-- Source: 国土数値情報 （地価公示データ）(Ministry of Land, Infrastructure, Transport and Tourism) https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-L01-2025.html
+- 国土数値情報 （地価公示データ）(Ministry of Land, Infrastructure, Transport and Tourism) https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-L01-2025.html
+- 国土数値情報 （行政地区データ）(Ministry of Land, Infrastructure, Transport and Tourism) https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2025.html
 
   The original data has been processed and transformed for visualization purposes.
 

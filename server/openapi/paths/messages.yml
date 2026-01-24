@@ -37,6 +37,8 @@ post:
             properties:
               response:
                 type: string
+              ward:
+                type: string
     default:
       description: Error response
       content:

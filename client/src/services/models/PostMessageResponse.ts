@@ -25,6 +25,12 @@ export interface PostMessageResponse {
    * @memberof PostMessageResponse
    */
   response?: string
+  /**
+   *
+   * @type {string}
+   * @memberof PostMessageResponse
+   */
+  ward?: string
 }
 
 /**
@@ -47,6 +53,7 @@ export function PostMessageResponseFromJSONTyped(
   }
   return {
     response: json['response'] == null ? undefined : json['response'],
+    ward: json['ward'] == null ? undefined : json['ward'],
   }
 }
 
@@ -64,5 +71,6 @@ export function PostMessageResponseToJSONTyped(
 
   return {
     response: value['response'],
+    ward: value['ward'],
   }
 }

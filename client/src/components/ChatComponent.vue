@@ -73,6 +73,10 @@ import { Circle } from 'lucide-vue-next'
 import type { MapClickEvent } from './MapComponent.vue'
 import { Switch } from './ui/switch'
 
+const emit = defineEmits<{
+  wardChange: [ward: string | null]
+}>()
+
 interface ChatMessage {
   id: number
   role: 'user' | 'agent'
@@ -116,6 +120,8 @@ const sendMessage = async (event?: MapClickEvent) => {
   const message = userInput.value.trim()
   if (!message || isLoading.value) return
 
+  emit('wardChange', null)
+
   messages.value.push({
     id: nextMessageId.value,
     role: 'user',
@@ -141,6 +147,8 @@ const sendMessage = async (event?: MapClickEvent) => {
       role: 'agent',
       content: response.response ?? '',
     })
+
+    emit('wardChange', response.ward ?? null)
 
     scrollToBottom()
   } catch (error) {
