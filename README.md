@@ -6,15 +6,6 @@
 
 A Retrieval-Augmented Generation (RAG) application for exploring Tokyo land prices using an interactive map
 
-## Demo
-
-**[tokyolandpriceai.com](https://tokyolandpriceai.com)**
-
-### Example questions
-
-- Which areas in Tokyo have the highest land prices?
-- Where are good residential areas near Shibuya?
-
 ## Setup
 
 ### Prerequisites
@@ -33,6 +24,11 @@ docker compose up -d
 3. Set up Lambda. Follow the guide [here](./server/README.md).
 
 4. Access http://localhost:5173/.
+
+### Example questions
+
+- Which areas in Tokyo have the highest land prices?
+- Where are good residential areas near Shibuya?
 
 ## Tech Stack
 
