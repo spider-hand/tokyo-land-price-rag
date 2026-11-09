@@ -21,9 +21,7 @@ docker compose up -d
 
 2. Set up Qdrant. Follow the guide [here](./scripts/README.md).
 
-3. Set up Lambda. Follow the guide [here](./server/README.md).
-
-4. Access http://localhost:5173/.
+3. Access http://localhost:5173/.
 
 ### Example questions
 
@@ -34,10 +32,9 @@ docker compose up -d
 
 - Frontend: Vue
 - Backend: AWS Lambda
-- Infrastructure: AWS SAM
 - LLM: OpenAI API
 - Vector Search DB: Qdrant
-- Local Development: Docker, LocalStack
+- Local Development: Docker
 - Others: OpenStreetMap, Mapbox, Maplibre
 
 ## Contribution
