@@ -11,17 +11,35 @@ A Retrieval-Augmented Generation (RAG) application for exploring Tokyo land pric
 ### Prerequisites
 
 - [Mapbox API key](https://www.mapbox.com)
+- [OpenAI API key](https://platform.openai.com/api-keys)
 - [Docker](https://www.docker.com)
+- [uv](https://docs.astral.sh/uv/)
 
-1. Start Docker:
+1. Create the environment files:
+
+```bash
+cp .env.example .env
+cp client/.env.example client/.env
+```
+
+Set `OPENAI_API_KEY` in `.env` and `VITE_MAPBOX_TOKEN` in `client/.env`.
+
+2. Start the services:
 
 ```bash
 docker compose up -d
 ```
 
-2. Set up Qdrant. Follow the guide [here](./scripts/README.md).
+3. Initialize Qdrant:
 
-3. Access http://localhost:5173/.
+```bash
+cd scripts && uv run python init_qdrant.py
+```
+
+This replaces the existing collection and generates embeddings using the OpenAI
+API, which may incur charges.
+
+4. Access http://localhost:5173/.
 
 ### Example questions
 
@@ -31,7 +49,7 @@ docker compose up -d
 ## Tech Stack
 
 - Frontend: Vue
-- Backend: AWS Lambda
+- Backend: Django
 - LLM: OpenAI API
 - Vector Search DB: Qdrant
 - Local Development: Docker

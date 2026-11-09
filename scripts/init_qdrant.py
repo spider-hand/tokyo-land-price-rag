@@ -1,4 +1,3 @@
-import argparse
 import os
 import json
 import numpy as np
@@ -10,6 +9,7 @@ from tqdm import tqdm
 import mapclassify
 import math
 import re
+from pathlib import Path
 
 
 class KnowledgeDict(TypedDict):
@@ -25,17 +25,7 @@ class KnowledgeDict(TypedDict):
     distance_to_station_tier: int
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--env", choices=["localstack", "prod"], default="localstack")
-args = parser.parse_args()
-
-env = args.env
-
-# Load environment variables
-if env == "localstack":
-    load_dotenv(".env.localstack")
-else:
-    load_dotenv(".env.prod")
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 # Configuration
 COLLECTION_NAME = "tokyo_landprice_rag"
@@ -46,15 +36,7 @@ BATCH_SIZE = 2048
 
 openai = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-if env == "localstack":
-    client = QdrantClient(host="localhost", port=6333)
-else:
-    client = QdrantClient(
-        api_key=os.getenv("QDRANT_API_KEY"),
-        host=os.getenv("QDRANT_HOST"),
-        port=443,
-        check_compatibility=False,
-    )
+client = QdrantClient(host="localhost", port=6333)
 
 
 def build_embedding_input(k: KnowledgeDict) -> str:

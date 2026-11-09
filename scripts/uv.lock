@@ -24,19 +24,6 @@ wheels = [
 ]
 
 [[package]]
-name = "aws-lambda-powertools"
-version = "3.24.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "jmespath" },
-    { name = "typing-extensions" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/3d/33/d8666a4fc8bae7c783e3dafa9bd4ca463080a8ef83d264a2379662e1313f/aws_lambda_powertools-3.24.0.tar.gz", hash = "sha256:9f86959c4aeac9669da799999aae5feac7a3a86e642b52473892eaa4273d3cc3", size = 704516, upload-time = "2026-01-05T12:30:38.414Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/68/11/0602c8c31fc48e77ed370279ccef1a258dedcbfad1a9dba8e39b7c5df367/aws_lambda_powertools-3.24.0-py3-none-any.whl", hash = "sha256:9c9002856f61b86f49271a9d7efa0dad322ecd22719ddc1c6bb373e57ee0421a", size = 849835, upload-time = "2026-01-05T12:30:36.962Z" },
-]
-
-[[package]]
 name = "certifi"
 version = "2025.11.12"
 source = { registry = "https://pypi.org/simple" }
@@ -197,15 +184,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/86/db/c4438e8febfb303486d13c6b72f5eb71cf851e300a0c1f0b4140018dd31f/jiter-0.11.1-cp314-cp314t-win32.whl", hash = "sha256:b2ce0d6156a1d3ad41da3eec63b17e03e296b78b0e0da660876fccfada86d2f7", size = 204043, upload-time = "2025-10-17T11:30:40.308Z" },
     { url = "https://files.pythonhosted.org/packages/36/59/81badb169212f30f47f817dfaabf965bc9b8204fed906fab58104ee541f9/jiter-0.11.1-cp314-cp314t-win_amd64.whl", hash = "sha256:f4db07d127b54c4a2d43b4cf05ff0193e4f73e0dd90c74037e16df0b29f666e1", size = 204046, upload-time = "2025-10-17T11:30:41.692Z" },
     { url = "https://files.pythonhosted.org/packages/dd/01/43f7b4eb61db3e565574c4c5714685d042fb652f9eef7e5a3de6aafa943a/jiter-0.11.1-cp314-cp314t-win_arm64.whl", hash = "sha256:28e4fdf2d7ebfc935523e50d1efa3970043cfaa161674fe66f9642409d001dfe", size = 188069, upload-time = "2025-10-17T11:30:43.23Z" },
-]
-
-[[package]]
-name = "jmespath"
-version = "1.0.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/00/2a/e867e8531cf3e36b41201936b7fa7ba7b5702dbef42922193f05c8976cd6/jmespath-1.0.1.tar.gz", hash = "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe", size = 25843, upload-time = "2022-06-17T18:00:12.224Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl", hash = "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980", size = 20256, upload-time = "2022-06-17T18:00:10.251Z" },
 ]
 
 [[package]]
@@ -518,7 +496,6 @@ name = "scripts"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "aws-lambda-powertools" },
     { name = "mapclassify" },
     { name = "numpy" },
     { name = "openai" },
@@ -530,7 +507,6 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "aws-lambda-powertools", specifier = ">=3.24.0" },
     { name = "mapclassify", specifier = ">=2.10.0" },
     { name = "numpy", specifier = ">=2.4.0" },
     { name = "openai", specifier = ">=2.14.0" },
