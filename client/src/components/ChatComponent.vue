@@ -66,7 +66,7 @@ import SidebarHeader from './ui/sidebar/SidebarHeader.vue'
 import Textarea from './ui/textarea/Textarea.vue'
 import { computed, ref, nextTick } from 'vue'
 import ChatMessageComponent from './ChatMessageComponent.vue'
-import { MessagesApi } from '@/services'
+import { MessagesApi } from '@/api-client'
 import useApi from '@/composables/useApi'
 import useLanguage from '@/composables/useLanguage'
 import { Circle } from 'lucide-vue-next'
@@ -133,8 +133,8 @@ const sendMessage = async (event?: MapClickEvent) => {
   scrollToBottom()
 
   try {
-    const response = await messagesApi.postMessage({
-      postMessageRequest: {
+    const response = await messagesApi.messagesCreate({
+      messageRequest: {
         message,
         lat: event?.lat,
         lon: event?.lon,

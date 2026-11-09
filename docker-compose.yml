@@ -21,6 +21,8 @@ services:
       - "5173:5173"
     env_file:
       - ./client/.env
+    environment:
+      API_PROXY_TARGET: http://server:8000
 
   qdrant:
     image: qdrant/qdrant:latest
