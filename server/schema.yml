@@ -5,9 +5,9 @@ info:
 paths:
   /api/v1/health/:
     get:
-      operationId: api_v1_health_retrieve
+      operationId: health_retrieve
       tags:
-      - api
+      - health
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -19,6 +19,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/HealthResponse'
           description: ''
+  /api/v1/messages/:
+    post:
+      operationId: messages_create
+      tags:
+      - messages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MessageRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MessageRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+          description: ''
 components:
   schemas:
     HealthResponse:
@@ -28,6 +56,39 @@ components:
           type: string
       required:
       - message
+    MessageRequest:
+      type: object
+      properties:
+        message:
+          type: string
+        lat:
+          type: number
+          format: double
+          nullable: true
+        lon:
+          type: number
+          format: double
+          nullable: true
+        is_point:
+          type: boolean
+          nullable: true
+        language:
+          type: string
+          nullable: true
+          default: en
+      required:
+      - message
+    MessageResponse:
+      type: object
+      properties:
+        response:
+          type: string
+        ward:
+          type: string
+          nullable: true
+      required:
+      - response
+      - ward
   securitySchemes:
     basicAuth:
       type: http

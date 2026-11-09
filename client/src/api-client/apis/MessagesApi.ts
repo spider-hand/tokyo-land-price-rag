@@ -13,21 +13,40 @@
  */
 
 import * as runtime from '../runtime'
-import type { HealthResponse } from '../models/index'
-import { HealthResponseFromJSON, HealthResponseToJSON } from '../models/index'
+import type { MessageRequest, MessageResponse } from '../models/index'
+import {
+  MessageRequestFromJSON,
+  MessageRequestToJSON,
+  MessageResponseFromJSON,
+  MessageResponseToJSON,
+} from '../models/index'
+
+export interface MessagesCreateRequest {
+  messageRequest: MessageRequest
+}
 
 /**
  *
  */
-export class ApiApi extends runtime.BaseAPI {
+export class MessagesApi extends runtime.BaseAPI {
   /**
    */
-  async apiV1HealthRetrieveRaw(
+  async messagesCreateRaw(
+    requestParameters: MessagesCreateRequest,
     initOverrides?: RequestInit | runtime.InitOverrideFunction,
-  ): Promise<runtime.ApiResponse<HealthResponse>> {
+  ): Promise<runtime.ApiResponse<MessageResponse>> {
+    if (requestParameters['messageRequest'] == null) {
+      throw new runtime.RequiredError(
+        'messageRequest',
+        'Required parameter "messageRequest" was null or undefined when calling messagesCreate().',
+      )
+    }
+
     const queryParameters: any = {}
 
     const headerParameters: runtime.HTTPHeaders = {}
+
+    headerParameters['Content-Type'] = 'application/json'
 
     if (
       this.configuration &&
@@ -38,23 +57,25 @@ export class ApiApi extends runtime.BaseAPI {
     }
     const response = await this.request(
       {
-        path: `/api/v1/health/`,
-        method: 'GET',
+        path: `/api/v1/messages/`,
+        method: 'POST',
         headers: headerParameters,
         query: queryParameters,
+        body: MessageRequestToJSON(requestParameters['messageRequest']),
       },
       initOverrides,
     )
 
-    return new runtime.JSONApiResponse(response, (jsonValue) => HealthResponseFromJSON(jsonValue))
+    return new runtime.JSONApiResponse(response, (jsonValue) => MessageResponseFromJSON(jsonValue))
   }
 
   /**
    */
-  async apiV1HealthRetrieve(
+  async messagesCreate(
+    requestParameters: MessagesCreateRequest,
     initOverrides?: RequestInit | runtime.InitOverrideFunction,
-  ): Promise<HealthResponse> {
-    const response = await this.apiV1HealthRetrieveRaw(initOverrides)
+  ): Promise<MessageResponse> {
+    const response = await this.messagesCreateRaw(requestParameters, initOverrides)
     return await response.value()
   }
 }
