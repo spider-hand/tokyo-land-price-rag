@@ -1,7 +1,7 @@
 # ruff: noqa: E402
 
 # Add the project root directory to sys.path so that modules under
-# `server/` can be imported when running this script from `scripts/`Ï
+# `legacy/` can be imported when running this script from `scripts/`Ï
 import sys
 from pathlib import Path
 
@@ -18,8 +18,8 @@ from ragas import EvaluationDataset, SingleTurnSample
 from ragas.llms import LangchainLLMWrapper
 from ragas.embeddings import LangchainEmbeddingsWrapper
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from server.src.core.openai import embed, extract_intent, generate_with_llm
-from server.src.core.qdrant import build_filter, retrieve_contexts
+from legacy.src.core.openai import embed, extract_intent, generate_with_llm
+from legacy.src.core.qdrant import build_filter, retrieve_contexts
 from typing import TypedDict
 
 # Configuration

@@ -1,4 +1,10 @@
 services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - "127.0.0.1:8000:8000"
+
   client:
     image: tokyo-landprice-rag/client:latest
     container_name: tokyo-landprice-rag-client

@@ -1,0 +1,7 @@
+.venv/
+volume/
+__pycache__/
+*.pyc
+.env*
+secret.*.json
+db.sqlite3
