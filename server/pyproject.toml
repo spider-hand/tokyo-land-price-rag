@@ -11,4 +11,11 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["ruff>=0.14.10"]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-django>=4.14.0",
+    "ruff>=0.14.10",
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "server.settings"

@@ -12,4 +12,4 @@ pre-commit:
     - name: server-lint
       run: cd server && uv run --no-sync ruff check .
     - name: server-test
-      run: cd server && (uv run --no-sync python -m unittest discover || [ $? -eq 5 ])
+      run: cd server && uv run --no-sync pytest
