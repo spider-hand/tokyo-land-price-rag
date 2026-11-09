@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "generate:api": "rm -rf src/api-client && openapi-generator-cli generate -i ../server/schema.yml -g typescript-fetch -o src/api-client --additional-properties=hideGenerationTimestamp=true && prettier --write src/api-client",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -32,6 +33,7 @@
     "vue": "^3.5.26"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "2.42.0",
     "@playwright/test": "^1.57.0",
     "@tsconfig/node24": "^24.0.3",
     "@types/jsdom": "^27.0.0",

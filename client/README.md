@@ -79,8 +79,11 @@ npm run lint
 
 ## Generate API client with [OpenAPI generator](https://openapi-generator.tech)
 
-Run
+Java is required.
 
 ```sh
-openapi-generator generate -i ../server/openapi/openapi.yaml -g typescript-fetch -o ./src/services/
+cd ../server
+uv run python manage.py spectacular --file schema.yml --validate --fail-on-warn
+cd ../client
+npm run generate:api
 ```
