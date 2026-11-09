@@ -1,6 +1,6 @@
 from aws_lambda_powertools.utilities.typing import LambdaContext
-from core.logger import dynamic_inject_lambda_context, logger
 
+from core.logger import dynamic_inject_lambda_context, logger
 
 CORS_HEADERS = {
     "Access-Control-Allow-Origin": "*",
@@ -16,7 +16,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
         return policy
 
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         logger.exception("Authentication error")
         logger.info(
             {

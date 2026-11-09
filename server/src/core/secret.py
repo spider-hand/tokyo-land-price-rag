@@ -1,6 +1,7 @@
 import json
 from functools import lru_cache
 from typing import TypedDict
+
 from .env import environment
 
 
@@ -51,7 +52,7 @@ def get_secret() -> SecretDict:
 
     try:
         return json.loads(secret_string)
-    except Exception as e:
+    except (json.JSONDecodeError, TypeError, UnicodeDecodeError) as e:
         return {"error": str(e)}
 
 

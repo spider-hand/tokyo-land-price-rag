@@ -1,17 +1,19 @@
 from dataclasses import dataclass
+from typing import TypedDict
+
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import (
-    Filter,
     FieldCondition,
-    MatchValue,
-    Range,
+    Filter,
     GeoBoundingBox,
     GeoPoint,
+    MatchValue,
+    Range,
     ScoredPoint,
 )
-from typing import TypedDict, Optional
-from .secret import secrets
+
 from .env import environment
+from .secret import secrets
 
 # script
 if environment is None:
@@ -57,7 +59,7 @@ class SearchIntent(TypedDict, total=False):
     require_bottom_1_percent_change_rate: bool
 
 
-def build_filter(intent: SearchIntent) -> Optional[Filter]:
+def build_filter(intent: SearchIntent) -> Filter | None:
     must: list[FieldCondition] = []
 
     def require_true(field_name: str) -> None:
@@ -150,7 +152,7 @@ def build_geo_filter(lat: float, lon: float, bbox_size_meters: float = 500) -> F
 
 
 def retrieve_contexts(
-    vector: list[float], query_filter: Optional[Filter], limit: int = 5
+    vector: list[float], query_filter: Filter | None, limit: int = 5
 ) -> RetrievalResult:
     hits = client.query_points(
         collection_name=COLLECTION_NAME,

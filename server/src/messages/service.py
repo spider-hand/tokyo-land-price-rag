@@ -1,8 +1,9 @@
-from core.logger import logger
-from messages.model import PostMessageRequest, PostMessageResponse
 from aws_lambda_powertools.utilities.parser.models import APIGatewayProxyEventModel
-from core.qdrant import build_filter, build_geo_filter, retrieve_contexts
+
+from core.logger import logger
 from core.openai import embed, extract_intent, generate_with_llm
+from core.qdrant import build_filter, build_geo_filter, retrieve_contexts
+from messages.model import PostMessageRequest, PostMessageResponse
 
 
 def post_message_service(event: APIGatewayProxyEventModel) -> PostMessageResponse:
@@ -66,6 +67,6 @@ def post_message_service(event: APIGatewayProxyEventModel) -> PostMessageRespons
         response = generate_with_llm(question=message, contexts=result.contexts)
         logger.info({"event": "generate_with_llm", "response": response})
         return PostMessageResponse(response=response, ward=ward)
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to post a message")
-        raise e
+        raise

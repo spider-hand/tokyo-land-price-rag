@@ -1,9 +1,10 @@
 import json
-from openai import OpenAI
-from .secret import secrets
-from .qdrant import SearchIntent
-from .logger import logger
 
+from openai import OpenAI
+
+from .logger import logger
+from .qdrant import SearchIntent
+from .secret import secrets
 
 openai = OpenAI(api_key=secrets["OPENAI_API_KEY"])
 

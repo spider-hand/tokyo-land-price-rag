@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: client-format
+      run: cd client && npx prettier --check src/
+    - name: client-lint
+      run: cd client && npx eslint .
+    - name: client-test
+      run: cd client && npm run test:unit -- --run
+    - name: server-format
+      run: cd server && uv run --no-sync ruff format --check .
+    - name: server-lint
+      run: cd server && uv run --no-sync ruff check .
+    - name: server-test
+      run: cd server && (uv run --no-sync python -m unittest discover || [ $? -eq 5 ])

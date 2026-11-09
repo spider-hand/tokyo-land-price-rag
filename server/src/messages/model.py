@@ -1,15 +1,14 @@
 from pydantic import BaseModel
-from typing import Optional
 
 
 class PostMessageRequest(BaseModel):
     message: str
-    lat: Optional[float] = None
-    lon: Optional[float] = None
-    is_point: Optional[bool] = None
-    language: Optional[str] = "en"
+    lat: float | None = None
+    lon: float | None = None
+    is_point: bool | None = None
+    language: str | None = "en"
 
 
 class PostMessageResponse(BaseModel):
     response: str
-    ward: Optional[str] = None
+    ward: str | None = None
