@@ -34,7 +34,6 @@ docker compose up -d
 
 - Frontend: Vue
 - Backend: AWS Lambda
-- Hosting: Cloudflare, Fly.io
 - Infrastructure: AWS SAM
 - LLM: OpenAI API
 - Vector Search DB: Qdrant
